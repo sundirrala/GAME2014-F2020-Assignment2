@@ -30,4 +30,9 @@ public class ButtonBehaviour : MonoBehaviour
         SceneManager.LoadScene("Menu Screen");
     }
 
+    public void TestPressed()
+    {
+        SceneManager.LoadScene("Gameover Screen");
+    }
+
 }

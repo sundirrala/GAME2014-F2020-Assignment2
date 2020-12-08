@@ -12,6 +12,8 @@ public class PlayerBehaviour : MonoBehaviour
     float maxVelX, jumpVelY, joystickSensitivity;
     [SerializeField]
     LayerMask platforms;
+    [SerializeField]
+    Animator playerAni;
 
     private Rigidbody2D rb;
 
@@ -24,13 +26,26 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float vel = Vector3.Magnitude(rb.velocity);
+        
+        if(vel > 0.0f)
+        {
+            playerAni.SetInteger("state", 1);
+        }
+        else
+        {
+            playerAni.SetInteger("state", 0);
+        }
+
         if(joystick.localPosition.x >= joystickSensitivity)
         {
             rb.velocity = new Vector2(joystick.localPosition.x * maxVelX * Time.deltaTime, rb.velocity.y);
+            GetComponent<SpriteRenderer>().flipX = false;
         }
         else if (joystick.localPosition.x <= -joystickSensitivity)
         {
             rb.velocity = new Vector2(joystick.localPosition.x * maxVelX * Time.deltaTime, rb.velocity.y);
+            GetComponent<SpriteRenderer>().flipX = true;
         }
 
         if (joystick.localPosition.y >= 0.5f)
