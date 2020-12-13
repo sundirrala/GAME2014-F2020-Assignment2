@@ -41,8 +41,12 @@ public class PlayerBehaviour : MonoBehaviour
                 playerAni.SetInteger("state", 0);
             }
         }
+        else 
+        {
+            GetComponent<Animator>().SetInteger("state", 3);
+        }
 
-        if(joystick.localPosition.x >= joystickSensitivity)
+        if (joystick.localPosition.x >= joystickSensitivity)
         {
             rb.velocity = new Vector2(joystick.localPosition.x * maxVelX * Time.deltaTime, rb.velocity.y);
             GetComponent<SpriteRenderer>().flipX = false;

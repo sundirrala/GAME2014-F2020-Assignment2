@@ -24,7 +24,7 @@ public class AttackButtonBehaviour : MonoBehaviour
             time += Time.deltaTime;
         }
 
-        if (time >= 1.583f && player.GetComponent<PlayerBehaviour>().isAttacc)
+        if (time >= player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length && player.GetComponent<PlayerBehaviour>().isAttacc)
         {
             time = 0.0f;
             player.GetComponent<PlayerBehaviour>().isAttacc = false;
@@ -39,6 +39,5 @@ public class AttackButtonBehaviour : MonoBehaviour
     {
         Debug.Log("FIrE");
         player.GetComponent<PlayerBehaviour>().isAttacc = true;
-        player.GetComponent<Animator>().SetInteger("state", 3);
     }
 }
