@@ -13,7 +13,9 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField]
     LayerMask platforms;
     [SerializeField]
-    Animator playerAni;
+    public Animator playerAni;
+
+    public bool isAttacc = false;
 
     private Rigidbody2D rb;
 
@@ -28,13 +30,16 @@ public class PlayerBehaviour : MonoBehaviour
     {
         float vel = Vector3.Magnitude(rb.velocity);
         
-        if(vel > 0.0f)
+        if(!isAttacc)
         {
-            playerAni.SetInteger("state", 1);
-        }
-        else
-        {
-            playerAni.SetInteger("state", 0);
+            if (vel > 0.0f)
+            {
+                playerAni.SetInteger("state", 1);
+            }
+            else
+            {
+                playerAni.SetInteger("state", 0);
+            }
         }
 
         if(joystick.localPosition.x >= joystickSensitivity)
