@@ -16,17 +16,11 @@ public class PlayerDamage : MonoBehaviour
         
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(transform.parent.GetComponent<PlayerBehaviour>().isAttacc)
+        if(collision.CompareTag("Enemy") && transform.parent.GetComponent<PlayerBehaviour>().isAttacc)
         {
-            foreach(var it in FindObjectsOfType<SlimeBehaviour>())
-            {
-                if(it.GetComponent<CapsuleCollider2D>().IsTouching(GetComponent<Collider2D>()))
-                {
-                    Destroy(collision.gameObject);
-                }
-            }
+            Destroy(collision.gameObject);
         }
     }
 }

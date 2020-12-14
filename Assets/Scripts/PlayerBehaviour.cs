@@ -15,6 +15,7 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField]
     public Animator playerAni;
 
+    public float health = 100.0f;
     public bool isAttacc = false;
 
     private Rigidbody2D rb;
