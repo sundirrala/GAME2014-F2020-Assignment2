@@ -35291,7 +35291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 1537149243}
   raycast: {fileID: 490526445}
-  maxVelX: 500
+  maxVelX: 200
   jumpVelY: 10
   joystickSensitivity: 0.3
   platforms:
